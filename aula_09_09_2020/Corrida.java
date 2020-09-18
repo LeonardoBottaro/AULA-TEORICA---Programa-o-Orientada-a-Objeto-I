@@ -1,4 +1,4 @@
-package aula_02_09_2020;
+package aula_09_09_2020;
 
 public class Corrida {
     

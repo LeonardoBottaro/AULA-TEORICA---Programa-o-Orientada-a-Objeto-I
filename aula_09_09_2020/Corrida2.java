@@ -1,14 +1,22 @@
-package aula_02_09_2020;
+package aula_09_09_2020;
 
-public class Corrida {
+import java.util.ArrayList;
+
+public class Corrida2 {
     
     public static void main(String[] args) {
         
+        ArrayList <Carro> lista = new ArrayList<Carro>();
+
+
         Carro c1 = new Carro();
         Carro c2 = new Carro();
 
         c1.setCodigo(1);
         c2.setCodigo(2);
+
+        lista.add(c1);
+        lista.add(c2);
 
         double distanciaPistaMetros = 10000; 
 
