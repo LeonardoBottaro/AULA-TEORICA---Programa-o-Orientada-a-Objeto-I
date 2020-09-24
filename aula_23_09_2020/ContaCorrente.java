@@ -8,11 +8,6 @@ public class ContaCorrente {
 
 
 
-
-    public int getNconta() {
-        return nconta;
-    }
-
     public void setNconta(int nconta) {
         this.nconta = nconta;
     }
@@ -39,6 +34,17 @@ public class ContaCorrente {
 
     public void setCliente(String cliente) {
         this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "ContaCorrente [cliente=" + cliente + ", limiteEspecial=" + limiteEspecial + ", nconta=" + nconta
+                + ", saldo=" + saldo + "]";
+    }
+
+
+    public int getNconta() {
+        return nconta;
     }
 
     

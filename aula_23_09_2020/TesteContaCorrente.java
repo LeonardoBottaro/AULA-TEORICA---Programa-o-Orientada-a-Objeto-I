@@ -5,16 +5,17 @@ import java.util.Scanner;
 
 
 public class TesteContaCorrente {
+
+    public static ArrayList<ContaCorrente> contasCadastradas = new ArrayList<ContaCorrente>();
     public static void main(String[] args) {
 
-        ArrayList<ContaCorrente> contasCadastradas = new ArrayList<ContaCorrente>();
-
         int op;
+
+        Scanner s = new Scanner(System.in);
         do{
-            Scanner s = new Scanner(System.in);
     
-            System.out.println("[1]Cadastra Conta\n[2]Depositar\n[3]Saque\n[4]Verificar Saldo\n[5]Somatorio\n[6]Sair");    
-            op = s.nextInt();
+            System.out.println("[1]Cadastrar Conta\n[2]Depositar\n[3]Saque\n[4]Verificar Saldo\n[5]Somatorio\n[6]Sair");    
+            op = Integer.parseInt(s.nextLine());
     
             switch(op){
                 case 1:
@@ -38,15 +39,25 @@ public class TesteContaCorrente {
                     do{
                         System.out.println("Digite seu saldo: ");
                         x = Double.parseDouble(s.nextLine());
-                        if(x < (y * -1)){
+                        if(x < y){
                         System.out.println("Valor incorreto!");
                         }
                     }while(x < y);
-                    s.close();
+                    contasCadastradas.add(c);
                     break;
                 case 2:
+                    int vc;
+                    System.out.println("DIgite o numero da Conta Corrente: ");
+                    vc = Integer.parseInt(s.nextLine());
+                    for(ContaCorrente cc: contasCadastradas){
+                        if(vc != cc.getNconta()){
+                            System.out.println("Conta não existente!");
+                        }
+                    }
             }
         }while(op!=6);
+
+        s.close();
         
     }
 }
