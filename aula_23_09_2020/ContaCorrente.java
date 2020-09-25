@@ -7,6 +7,12 @@ public class ContaCorrente {
     private String cliente;
 
 
+    public double depositar (double deposito){
+        this.saldo += deposito;
+        return saldo;
+    }
+
+
 
     public void setNconta(int nconta) {
         this.nconta = nconta;
