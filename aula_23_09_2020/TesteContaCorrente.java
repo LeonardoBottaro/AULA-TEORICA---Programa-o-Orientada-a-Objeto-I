@@ -16,11 +16,12 @@ public class TesteContaCorrente {
     
             System.out.println("[1]Cadastrar Conta\n[2]Depositar\n[3]Saque\n[4]Verificar Saldo\n[5]Somatorio\n[6]Sair");    
             op = Integer.parseInt(s.nextLine());
-            int vc,i=0;
+            int vc;
     
             switch(op){
                 case 1:
                     double x, y;
+                    int i=0;
     
                     ContaCorrente c = new ContaCorrente();;
                     c.setNconta(i+=1);
@@ -71,6 +72,30 @@ public class TesteContaCorrente {
                         }
                     }while(vc!= c.getNconta());
                     break;
+                case 3:
+                    do{
+                        double d;
+                        int g=0;
+                        c=contasCadastradas.get(g);
+                        System.out.println("Digite o numero da Conta Corrente: ");
+                        vc = Integer.parseInt(s.nextLine());
+                        for(int f=0;f<contasCadastradas.size();f++){
+                            c=contasCadastradas.get(f);
+                            if(vc == c.getNconta()){
+                                do{
+                                    System.out.println("Valor do Saque R$ = ");
+                                    d = Double.parseDouble(s.nextLine());
+                                    if(d<0){
+                                    System.out.println("Valor Invalido!");
+                                    }
+                                }while(d<0);
+                                c.sacar(d);
+                            }else{
+                                System.out.println("Conta não existente!");
+                            }
+                        }
+                    }while(vc!= c.getNconta());
+                break;
                 case 4:
                     do{
                         System.out.println("Digite o numero da Conta Corrente: ");

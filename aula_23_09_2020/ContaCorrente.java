@@ -12,6 +12,11 @@ public class ContaCorrente {
         return saldo;
     }
 
+    public double sacar (double saque){
+        this.saldo -= saque;
+        return saldo;
+    }
+
 
 
     public void setNconta(int nconta) {
