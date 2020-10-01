@@ -12,19 +12,20 @@ public class TesteContaCorrente {
         int op;
 
         Scanner s = new Scanner(System.in);
+        int i=0;
         do{
     
-            System.out.println("[1]Cadastrar Conta\n[2]Depositar\n[3]Saque\n[4]Verificar Saldo\n[5]Somatorio\n[6]Sair");    
+            System.out.println("\n[1]Cadastrar Conta\n[2]Depositar\n[3]Saque\n[4]Verificar Saldo\n[5]Somatorio\n[6]Sair");    
             op = Integer.parseInt(s.nextLine());
             int vc;
     
             switch(op){
                 case 1:
                     double x, y;
-                    int i=0;
+                    
     
                     ContaCorrente c = new ContaCorrente();;
-                    c.setNconta(i+=1);
+                    c.setNconta(i++);
         
                     System.out.println("Digite seu nome: ");    
                     c.setCliente(s.nextLine());
@@ -49,70 +50,79 @@ public class TesteContaCorrente {
                     contasCadastradas.add(c);
                     break;
                 case 2:
+                    int f=0;
+                    System.out.println("Digite o numero da Conta Corrente: ");
+                    vc = Integer.parseInt(s.nextLine());
                     do{
                         double d;
-                        int g=0;
-                        c=contasCadastradas.get(g);
-                        System.out.println("Digite o numero da Conta Corrente: ");
-                        vc = Integer.parseInt(s.nextLine());
-                        for(int f=0;f<contasCadastradas.size();f++){
-                            c=contasCadastradas.get(f);
-                            if(vc == c.getNconta()){
-                                do{
-                                    System.out.println("Valor do Deposito R$ = ");
-                                    d = Double.parseDouble(s.nextLine());
-                                    if(d<0){
-                                        System.out.println("Valor Invalido!");
-                                    }
-                                }while(d<0);
-                                c.depositar(d);
+                        c=contasCadastradas.get(f);
+                        if(vc == c.getNconta()){
+                            System.out.println("Valor do Deposito R$ = ");
+                            d = Double.parseDouble(s.nextLine());
+                            if(d<0){
+                                System.out.println("Valor do deposito invalido!\n");
+                                break; 
                             }else{
-                                System.out.println("Conta não existente!");
+                                c.depositar(d);
+                                break; 
                             }
                         }
-                    }while(vc!= c.getNconta());
+                        f++;
+                    }while(f < contasCadastradas.size());
+                    if(vc != c.getNconta()){
+                        System.out.println("Conta não existente!\n");
+                        break;
+                    }
                     break;
                 case 3:
+                    int g=0;
+                    System.out.println("Digite o numero da Conta Corrente: ");
+                    vc = Integer.parseInt(s.nextLine());
                     do{
                         double d;
-                        int g=0;
                         c=contasCadastradas.get(g);
-                        System.out.println("Digite o numero da Conta Corrente: ");
-                        vc = Integer.parseInt(s.nextLine());
-                        for(int f=0;f<contasCadastradas.size();f++){
-                            c=contasCadastradas.get(f);
-                            if(vc == c.getNconta()){
-                                do{
-                                    System.out.println("Valor do Saque R$ = ");
-                                    d = Double.parseDouble(s.nextLine());
-                                    if(d<0){
-                                    System.out.println("Valor Invalido!");
-                                    }
-                                }while(d<0);
+                        if(vc == c.getNconta()){
+                            System.out.println("Valor do Saque R$ = ");
+                            d = Double.parseDouble(s.nextLine());
+                            if(d<0){
+                                System.out.println("Valor do saque invalido!\n");
+                                break; 
+                            }
+                            if(c.getSaldo() == - c.getLimiteEspecial()){
+                                System.out.println("Limite de saque atingido!\n");
+                                break; 
+                            }
+                            else{
                                 c.sacar(d);
-                            }else{
-                                System.out.println("Conta não existente!");
+                                break; 
                             }
                         }
-                    }while(vc!= c.getNconta());
+                        g++;
+                    }while(g < contasCadastradas.size());
+                    if(vc != c.getNconta()){
+                        System.out.println("Conta não existente!\n");
+                        break;
+                    }
                 break;
                 case 4:
+                    int q=0;
+                    System.out.println("Digite o numero da Conta Corrente: ");
+                    vc = Integer.parseInt(s.nextLine());
                     do{
-                        System.out.println("Digite o numero da Conta Corrente: ");
-                        vc = Integer.parseInt(s.nextLine());
-                        int f=0;
-                        c=contasCadastradas.get(f);
+                        c=contasCadastradas.get(q);
                         if(vc == c.getNconta()){
                             System.out.println("Cliente - " + c.getCliente());
                             System.out.println("N° da Conta - " + c.getNconta());
                             System.out.println("Saldo = R$ " + c.getSaldo() + "\n");
-                                
-                        }else{
-                            System.out.println("Conta não existente!");
+                            break; 
                         }
-                        f++;
-                    }while(vc != c.getNconta());
-            }
+                        q++;
+                    }while(q < contasCadastradas.size());
+                    if(q == contasCadastradas.size()){
+                        System.out.println("Conta não existente!\n");
+                    }
+                }
+                    
         }while(op!=6);
 
         s.close();
